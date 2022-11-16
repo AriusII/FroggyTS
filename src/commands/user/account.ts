@@ -103,6 +103,7 @@ export class UserCommand extends Command {
         embed.setTitle(`Création de compte`)
             .setDescription(`Création de compte en cours...`)
             
+
         return await interaction.reply({ embeds: [embed] });
     }
 
