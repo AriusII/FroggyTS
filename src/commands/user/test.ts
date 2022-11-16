@@ -1,11 +1,9 @@
 import { ApplyOptions } from '@sapphire/decorators';
 import { Command, RegisterBehavior } from '@sapphire/framework';
-import { ColorResolvable, MessageEmbed, MessageActionRow, MessageButton, MessageSelectMenu } from 'discord.js';
+import { ColorResolvable, MessageEmbed } from 'discord.js';
 
 
-import * as API_Ticket from '../../others/api/endpoints/tickets';
 import { cmdIsActive, cmdGetName } from '../../others/utils/checks_functions';
-import * as fxs from '../../others/utils/functions';
 @ApplyOptions<Command.Options>({
 	description: `[TEST]`,
 })
