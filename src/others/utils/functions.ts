@@ -1,6 +1,6 @@
 import * as API_account from '../api/endpoints/account';
-import * as API_characters from '../api/endpoints/characters';
-import * as API_tickets from '../api/endpoints/tickets';
+//import * as API_characters from '../api/endpoints/characters';
+//import * as API_tickets from '../api/endpoints/tickets';
 
 export async function isGm(accountId: number) {
     const response = await API_account.API_getAccountAccessById(accountId);
@@ -42,27 +42,27 @@ export async function getClassByGender(genderId: number, classId: number) {
         case 0:
             switch (classId) {
                 case 1:
-                    return 'Warrior';
+                    return 'Guerrier'
                 case 2:
-                    return 'Paladin';
+                    return 'Paladin'
                 case 3:
-                    return 'Hunter';
+                    return 'Chasseur'
                 case 4:
-                    return 'Rogue';
+                    return 'Voleur'
                 case 5:
-                    return 'Priest';
+                    return 'Prêtre'
                 case 6:
-                    return 'Death Knight';
+                    return 'Chevalier de la mort'
                 case 7:
-                    return 'Shaman';
+                    return 'Chaman'
                 case 8:
-                    return 'Mage';
+                    return 'Mage'
                 case 9:
-                    return 'Warlock';
+                    return 'Démoniste'
                 case 11:
-                    return 'Druid';
+                    return 'Druide'
                 default:
-                    return 'Inconnu';
+                    return 'Inconnu'
             }
         case 1:
             switch (classId) {
@@ -99,27 +99,27 @@ export async function getRaceByGender(genderId: number, raceId: number) {
         case 0:
             switch (raceId) {
                 case 1:
-                    return 'Human';
+                    return 'Humain'
                 case 2:
-                    return 'Orc';
+                    return 'Orc'
                 case 3:
-                    return 'Dwarf';
+                    return 'Nain'
                 case 4:
-                    return 'Night Elf';
+                    return 'Elfe de la nuit'
                 case 5:
-                    return 'Undead';
+                    return 'Mort-vivant'
                 case 6:
-                    return 'Tauren';
+                    return 'Tauren'
                 case 7:
-                    return 'Gnome';
+                    return 'Gnome'
                 case 8:
-                    return 'Troll';
+                    return 'Troll'
                 case 10:
-                    return 'Blood Elf';
+                    return 'Elfe de sang'
                 case 11:
-                    return 'Draenei';
+                    return 'Draeneï'
                 default:
-                    return 'Inconnu';
+                    return 'Inconnu'
             }
         case 1:
             switch (raceId) {
