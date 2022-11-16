@@ -28,12 +28,12 @@ export class UserCommand extends Command {
 	}
 	// slash command
 	public async chatInputRun(interaction: Command.ChatInputInteraction) {
+        const discord_id = parseInt(interaction.user.id);
         const embed_color: ColorResolvable = process.env.EMBED_COLOR?.toString() as ColorResolvable;
         const embed = new MessageEmbed()
             .setColor(embed_color)
             .setTimestamp()
 
-        const discord_id = parseInt(interaction.user.id);
         if (!await cmdIsActive(7)) {
             embed.setTitle(`Commande désactivée`)
                 .setDescription(`❌ La commande "${cmdGetName(7)}" est désactivée pour le moment.`)

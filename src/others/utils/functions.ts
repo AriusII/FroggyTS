@@ -1,6 +1,9 @@
 import * as API_account from '../api/endpoints/account';
 //import * as API_characters from '../api/endpoints/characters';
 //import * as API_tickets from '../api/endpoints/tickets';
+import Canvas, { GlobalFonts, Image } from '@napi-rs/canvas';
+import type { Guild, GuildMember } from 'discord.js';
+import { buffer } from 'stream/consumers';
 
 export async function isGm(accountId: number) {
     const response = await API_account.API_getAccountAccessById(accountId);
@@ -149,4 +152,56 @@ export async function getRaceByGender(genderId: number, raceId: number) {
         default:
             return 'Unknown';
     }
+}
+
+export async function createCanvas(member: GuildMember, client: Guild) {
+    const font = '../assets/font/Metamorphous-Regular.otf';
+    GlobalFonts.registerFromPath(font, 'Metamorphous');
+    
+    const canvas = Canvas.createCanvas(400, 200);
+    const ctx = canvas.getContext('2d');
+
+    const x = canvas.width / 2
+    const y = canvas.height / 2
+
+    const min = 1
+    const max = 10
+
+    const randomNumber = Math.floor(Math.random() * (max - min)) + min
+    const background = await Canvas.loadImage(`../assets/img/${randomNumber}.jpg`)
+    ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 5;
+    ctx.strokeRect(0, 0, canvas.width, canvas.height);
+
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#ffffff';
+
+    ctx.font = '50px Metamorphous';
+    ctx.fillText(member.user.tag, x, y * 1.4);
+
+    ctx.font = '25px Metamorphous';
+    ctx.fillText(member.user.tag, x, y * 1.4);
+    const allUsers: any = client.client.users.cache.filter(user => !user.bot).size;
+    ctx.fillText(`Nous sommes plus que ${JSON.stringify(JSON.parse(allUsers) - 1)} joueurs !`, x, y * 1.7);
+
+    const radius = 75;
+    ctx.beginPath();
+    ctx.arc(x, y - 70, radius, 0, Math.PI * 2, true);
+    ctx.stroke();
+    ctx.closePath();
+    ctx.clip();
+
+    const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: 'jpg' }));
+
+    // We want to convert avatar as Buffer
+    const avatarBuffer = await <Buffer><unknown>avatar
+
+    const newAvatarImg = new Image();
+    newAvatarImg.src = Buffer.from(avatarBuffer);
+
+    ctx.drawImage(avatar, x - radius, y - radius - 70, radius * 2, radius * 2);
+
+    return canvas.encode('png');
 }

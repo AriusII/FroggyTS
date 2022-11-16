@@ -1,6 +1,8 @@
-# TypeScript Sapphire Bot example
+# FroggyJS : When FROGGY[https://github.com/ImAspect/FROGGY] meet SapphireJS[https://www.sapphirejs.dev/]
 
-This is a basic setup of a Discord bot using the [sapphire framework][sapphire] written in TypeScript
+Based on discord bot FROGGY from ImAspect[https://github.com/ImAspect], FroggyJS is a Discord Bot enchanced by SapphireJS[https://www.sapphirejs.dev/].
+
+His utility is to help you to manage your Discord World of Warcraft server.
 
 ## How to use it?
 
@@ -24,7 +26,7 @@ You can also run the bot with `npm dev`, this will first build your code and the
 
 ## License
 
-Dedicated to the public domain via the [Unlicense], courtesy of the Sapphire Community and its contributors.
+Dedicated to the public domain via the [MIT], courtesy of the Sapphire Community and its contributors.
 
 [sapphire]: https://github.com/sapphiredev/framework
 [unlicense]: https://github.com/sapphiredev/examples/blob/main/LICENSE.md

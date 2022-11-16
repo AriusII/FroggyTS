@@ -6,8 +6,8 @@ import { PrismaClient } from '@prisma/client';
 
 // Import expressServer as Express API Rest server
 import expressServer from './resources/server';
-expressServer.listen(3000, () => {
-    console.log('Express Server is running on port 3000');
+expressServer.listen(process.env.EXPRESS_PORT, () => {
+    console.log(`EXPRESS SERVER started on port ${process.env.EXPRESS_PORT}.`);
 });
 
 

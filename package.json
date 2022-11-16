@@ -5,6 +5,7 @@
   "author": "AriusII, ImAspect, @sapphire",
   "license": "MIT",
   "dependencies": {
+    "@napi-rs/canvas": "^0.1.30",
     "@sapphire/decorators": "^5.0.0",
     "@sapphire/discord-utilities": "^2.11.6",
     "@sapphire/discord.js-utilities": "^5.0.1",
