@@ -2,8 +2,8 @@
   "name": "FroggyJS",
   "version": "1.0.0",
   "main": "dist/index.js",
-  "author": "@sapphire",
-  "license": "UNLICENSE",
+  "author": "AriusII, ImAspect, @sapphire",
+  "license": "MIT",
   "dependencies": {
     "@sapphire/decorators": "^5.0.0",
     "@sapphire/discord-utilities": "^2.11.6",
@@ -27,7 +27,8 @@
     "jsbn": "^1.1.0",
     "prisma": "^4.6.1",
     "reflect-metadata": "^0.1.13",
-    "sha1": "^1.1.1"
+    "sha1": "^1.1.1",
+    "soap": "^0.45.0"
   },
   "devDependencies": {
     "@sapphire/prettier-config": "^1.4.4",
