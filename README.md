@@ -1,6 +1,6 @@
-# FroggyJS : When FROGGY[https://github.com/ImAspect/FROGGY] meet SapphireJS[https://www.sapphirejs.dev/]
+# FroggyJS : When FROGGY(https://github.com/ImAspect/FROGGY) meet SapphireJS(https://www.sapphirejs.dev/)
 
-Based on discord bot FROGGY from ImAspect[https://github.com/ImAspect], FroggyJS is a Discord Bot enchanced by SapphireJS[https://www.sapphirejs.dev/].
+Based on discord bot FROGGY from ImAspect(https://github.com/ImAspect), FroggyJS is a Discord Bot enchanced by SapphireJS(https://www.sapphirejs.dev/).
 
 His utility is to help you to manage your Discord World of Warcraft server.
 
