@@ -44,8 +44,8 @@ export async function accountAdd(req: Request, res: Response, _next: NextFunctio
         const email: string = req.body.email
         const password: string = req.body.password
         const salt: Buffer = crypto.randomBytes(32)
-        const verifier: Buffer = await createVerifier(username.toUpperCase(), password, salt)
-        const result = await modelAccount.accountCreate(username, email, salt, verifier);
+        const verifier: Buffer = await createVerifier(username, password, salt)
+        const result = await modelAccount.accountCreate(username.toUpperCase(), email, salt, verifier);
 
         if (result) {
             return res.status(200).json({ success: 'Account created !' });
@@ -66,10 +66,10 @@ export async function accountLoginDiscord(req: Request, res: Response, _next: Ne
             return res.status(400).json({ error: 'Account not registered !' });
         }
     
-        const verifier = await createVerifier(req.body.username.toUpperCase(), req.body.password, account[0].salt);
+        const verifier = await createVerifier(req.body.username, req.body.password, account[0].salt);
     
         // we check if the password is valid
-        if (verifier.toString('hex') != account[0].verifier.toString('hex')) {
+        if (verifier.toString('hex') !== account[0].verifier.toString('hex')) {
             return res.status(400).json({ error: 'Password is not valid !' });
         }
     
@@ -87,8 +87,9 @@ export async function accountLoginDiscord(req: Request, res: Response, _next: Ne
 
 export async function accountDiscord(req: Request, res: Response, _next: NextFunction) {
     try {
-        const discordid: number = req.body.discordid
+        const discordid: number = +req.params.discordid
         const result: any = await modelAccount.getAccountVerifiedByDiscordId(discordid);
+
         if (result.length === 0) {
             return res.status(400).json({ error: 'Account not registered !' });
         } else if (result.length === 1) {
@@ -103,10 +104,10 @@ export async function accountDiscord(req: Request, res: Response, _next: NextFun
 
 export async function accountAccess(req: Request, res: Response, _next: NextFunction) {
     try {
-        const discordid: number = req.body.discordid
-        const result: any = await modelAccount.getAccountAccessById(discordid);
+        const accountid: number = +req.params.accountid
+        const result: any = await modelAccount.getAccountAccessById(accountid);
         if (result.length === 0) {
-            return res.status(400).json({ error: 'Account not registered !' });
+            return res.status(400).json({ error: 'Account has no access !' });
         } else if (result.length === 1) {
             return res.status(200).json({ success: 'Account verified !' });
         } else {
@@ -119,12 +120,13 @@ export async function accountAccess(req: Request, res: Response, _next: NextFunc
 
 export async function accountCharacter(req: Request, res: Response, _next: NextFunction) {
     try {
-        const discordid: number = req.body.discordid
-        const result: any = await modelAccount.getAccountIdByCharacterGuid(discordid);
+        const guid: number = +req.params.guid
+        const result: any = await modelAccount.getAccountIdByCharacterGuid(guid);
+        console.log(result)
         if (result.length === 0) {
-            return res.status(400).json({ error: 'Account not registered !' });
+            return res.status(400).json({ error: 'Character not registered !' });
         } else if (result.length === 1) {
-            return res.status(200).json({ success: 'Account verified !' });
+            return res.status(200).json({ success: 'Character verified !' });
         } else {
             return res.status(400).json({ error: 'An error occured !' });
         }

@@ -1,6 +1,6 @@
 import { ApplyOptions } from '@sapphire/decorators';
 import { Command, RegisterBehavior } from '@sapphire/framework';
-import {  MessageEmbed } from 'discord.js';
+import { ColorResolvable, MessageEmbed } from 'discord.js';
 @ApplyOptions<Command.Options>({
 	description: `[TEST]`,
 })
@@ -24,9 +24,9 @@ export class UserCommand extends Command {
 
     // slash command
     public async chatInputRun(interaction: Command.ChatInputInteraction) {
-        //const embed_color: ColorResolvable = process.env.EMBED_COLOR?.toString() as ColorResolvable;
+        const embed_color: ColorResolvable = process.env.EMBED_COLOR?.toString() as ColorResolvable;
         const embed = new MessageEmbed()
-            .setColor('RANDOM')
+            .setColor(embed_color)
             .setTimestamp()
 
 /*         if (!await cmdIsActive(9)) {

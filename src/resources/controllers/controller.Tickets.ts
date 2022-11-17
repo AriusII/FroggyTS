@@ -17,8 +17,8 @@ export async function ticketAll(_req: Request, res: Response, _next: NextFunctio
 
 export async function ticketById(req: Request, res: Response, _next: NextFunction) {
     try {
-        const id: number = parseInt(req.params.id);
-        const result: any = await modelTickets.getTicketById(id);
+        const ticketid: number = +req.params.ticketid
+        const result: any = await modelTickets.getTicketById(ticketid);
         if (result) {
             return res.status(200).json({ success: result });
         } else {

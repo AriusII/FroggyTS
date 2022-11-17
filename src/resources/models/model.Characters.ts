@@ -3,16 +3,16 @@ import { container } from "@sapphire/framework";
 
 export async function getCharactersByAccountId(id: number) {
     try {
-        const result: any = await container.prisma.$queryRawUnsafe(`SELECT guid, name, race, class, gender, online FROM ${process.env.WORLD_DATABASE}.characters WHERE account = ?`, [id]);
+        const result: any = await container.prisma.$queryRawUnsafe(`SELECT guid, name, race, class, gender, online FROM ${process.env.CHARACTERS_DATABASE}.characters WHERE account = ?`, id);
         return result;
     } catch (error) {
         return error;
     }
 }
 
-export async function getCharactersByGuid(guid: number) {
+export async function getCharacterByGuid(guid: number) {
     try {
-        const result: any = await container.prisma.$queryRawUnsafe(`SELECT name, race, class, gender, level, money, online, totaltime, logout_time, health, creation_date FROM ${process.env.WORLD_DATABASE}.characters WHERE guid = ?`, [guid]);
+        const result: any = await container.prisma.$queryRawUnsafe(`SELECT name, race, class, gender, level, money, online, totaltime, logout_time, health, creation_date FROM ${process.env.CHARACTERS_DATABASE}.characters WHERE guid = ?`, guid);
         return result;
     } catch (error) {
         return error;

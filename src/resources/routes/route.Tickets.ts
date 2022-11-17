@@ -11,8 +11,8 @@ import { badRoutesRequestHandler } from '../middlewares/badRoutesRequest.hander'
 import { unknownRoutesHandler } from '../middlewares/unknownRoutes.hander';
 
 // We define the routes for the Tickets resources
-routeTickets.get('/all', TicketsController.ticketAll);
-routeTickets.get('/:id', TicketsController.ticketById);
+routeTickets.get('/all/tickets', TicketsController.ticketAll);
+routeTickets.get('/one/ticket/:ticketid', TicketsController.ticketById);
 
 // We define the bad routes handler
 routeTickets.all('/', badRoutesRequestHandler);

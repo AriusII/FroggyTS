@@ -11,9 +11,9 @@ import { badRoutesRequestHandler } from '../middlewares/badRoutesRequest.hander'
 import { unknownRoutesHandler } from '../middlewares/unknownRoutes.hander';
 
 // We define the routes for the Characters resources
-routeCharacters.get('/all/:accountid', CharactersController.getAllCharacters);
-routeCharacters.get('/:guid', CharactersController.getCharactersByGuid);
-routeCharacters.get('/discord/:discordid', CharactersController.getCharactersByDiscordId);
+routeCharacters.get('/all/account/:accountid', CharactersController.getCharactersByAccountId);
+routeCharacters.get('/one/guid/:guid', CharactersController.getCharacterByGuid);
+routeCharacters.get('/all/discord/:discordid', CharactersController.getCharactersByDiscordId);
 
 // We define the bad routes handler
 routeCharacters.all('/', badRoutesRequestHandler);

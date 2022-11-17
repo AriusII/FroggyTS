@@ -14,7 +14,7 @@ import { unknownRoutesHandler } from '../middlewares/unknownRoutes.hander';
 routeAccount.post('/add', accountController.accountAdd);
 routeAccount.post('/discord/login', accountController.accountLoginDiscord);
 routeAccount.get('/discord/:discordid', accountController.accountDiscord);
-routeAccount.get('/access/:id', accountController.accountAccess);
+routeAccount.get('/access/:accountid', accountController.accountAccess);
 routeAccount.get('/character/:guid', accountController.accountCharacter);
 
 // We define the bad routes handler
