@@ -1,15 +1,14 @@
 import './lib/setup';
 import { LogLevel, SapphireClient, container } from '@sapphire/framework';
-
 // Import Prisma as Database ORM
 import { PrismaClient } from '@prisma/client';
-
 // Import expressServer as Express API Rest server
 import expressServer from './resources/server';
-expressServer.listen(process.env.EXPRESS_PORT, () => {
-    console.log(`EXPRESS SERVER started on port ${process.env.EXPRESS_PORT}.`);
-});
+import { SOAPClient } from './others/soap/soapClient';
 
+expressServer.listen(process.env.EXPRESS_PORT, () => {
+    console.log(`Server is running on port ${process.env.EXPRESS_PORT}`);
+});
 
 const client = new SapphireClient({
 	defaultPrefix: '!',
@@ -37,6 +36,8 @@ const client = new SapphireClient({
 const main = async () => {
 	try {
 		client.logger.info('Logging in');
+        container.prisma = new PrismaClient();
+        container.soap = new SOAPClient();
 		await client.login();
 		client.logger.info('logged in');
 	} catch (error) {
@@ -51,5 +52,6 @@ main();
 declare module '@sapphire/pieces' {
 	interface Container {
 		prisma: PrismaClient;
+        soap: SOAPClient;
 	}
 }

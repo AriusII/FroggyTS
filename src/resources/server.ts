@@ -3,7 +3,7 @@ import express from 'express';
 import cors  from 'cors';
 
 // create a new express application instance
-const expressServer: express.Application = express();
+export const expressServer: express.Application = express();
 
 // use CORS to allow cross-origin requests
 expressServer.use(cors({
@@ -12,10 +12,10 @@ expressServer.use(cors({
 }));
 
 // define app json
-expressServer.use(express.json({ limit: '25mb' }))
+expressServer.use(express.json({ limit: '25mb' }));
 
 // define urlencoded size
-expressServer.use(express.urlencoded({ limit: '50mb', extended: true }))
+expressServer.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 // We import all the routes here
 import routeAccount from './routes/route.Account';

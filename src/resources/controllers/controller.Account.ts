@@ -73,7 +73,7 @@ export async function accountLoginDiscord(req: Request, res: Response, _next: Ne
             return res.status(400).json({ error: 'Password is not valid !' });
         }
     
-        const result = await modelAccount.accountLogin(account[0].id, req.body.discordId)
+        const result = await modelAccount.accountLogin(account[0].id, req.body.discordid)
     
         if (result) {
             return res.status(200).json({ success: `Account ${req.body.username} login with success to discord !` });
@@ -87,8 +87,8 @@ export async function accountLoginDiscord(req: Request, res: Response, _next: Ne
 
 export async function accountDiscord(req: Request, res: Response, _next: NextFunction) {
     try {
-        const discordId: number = req.body.discordId
-        const result: any = await modelAccount.getAccountVerifiedByDiscordId(discordId);
+        const discordid: number = req.body.discordid
+        const result: any = await modelAccount.getAccountVerifiedByDiscordId(discordid);
         if (result.length === 0) {
             return res.status(400).json({ error: 'Account not registered !' });
         } else if (result.length === 1) {
@@ -103,8 +103,8 @@ export async function accountDiscord(req: Request, res: Response, _next: NextFun
 
 export async function accountAccess(req: Request, res: Response, _next: NextFunction) {
     try {
-        const discordId: number = req.body.discordId
-        const result: any = await modelAccount.getAccountAccessById(discordId);
+        const discordid: number = req.body.discordid
+        const result: any = await modelAccount.getAccountAccessById(discordid);
         if (result.length === 0) {
             return res.status(400).json({ error: 'Account not registered !' });
         } else if (result.length === 1) {
@@ -119,8 +119,8 @@ export async function accountAccess(req: Request, res: Response, _next: NextFunc
 
 export async function accountCharacter(req: Request, res: Response, _next: NextFunction) {
     try {
-        const discordId: number = req.body.discordId
-        const result: any = await modelAccount.getAccountIdByCharacterGuid(discordId);
+        const discordid: number = req.body.discordid
+        const result: any = await modelAccount.getAccountIdByCharacterGuid(discordid);
         if (result.length === 0) {
             return res.status(400).json({ error: 'Account not registered !' });
         } else if (result.length === 1) {

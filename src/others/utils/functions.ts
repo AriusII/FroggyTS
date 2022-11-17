@@ -3,7 +3,6 @@ import * as API_account from '../api/endpoints/account';
 //import * as API_tickets from '../api/endpoints/tickets';
 import Canvas, { GlobalFonts, Image } from '@napi-rs/canvas';
 import type { Guild, GuildMember } from 'discord.js';
-import { buffer } from 'stream/consumers';
 
 export async function isGm(accountId: number) {
     const response = await API_account.API_getAccountAccessById(accountId);

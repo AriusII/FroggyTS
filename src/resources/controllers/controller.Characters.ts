@@ -7,7 +7,7 @@ export async function getAllCharacters(req: Request, res: Response, _next: NextF
     try {
         const discordid: number = parseInt(req.params.discordid);
         const result1: any = await getAccountVerifiedByDiscordId(discordid);
-        const result2: any = await modelCharacters.getCharactersByAccountId(result1[0].accountId);
+        const result2: any = await modelCharacters.getCharactersByAccountId(result1[0].accountid);
 
         if (result2.length > 0) {
             res.status(200).json(result2);
@@ -21,7 +21,7 @@ export async function getAllCharacters(req: Request, res: Response, _next: NextF
 
 export async function getCharactersByGuid(req: Request, res: Response, _next: NextFunction) {
     try {
-        const guid: number = parseInt(req.params.Guid);
+        const guid: number = parseInt(req.params.guid);
         const result: any = await modelCharacters.getCharactersByGuid(guid);
 
         if (result.length > 0) {
@@ -38,7 +38,7 @@ export async function getCharactersByDiscordId(req: Request, res: Response, _nex
     try {
         const discordid: number = parseInt(req.params.discordid);
         const result1: any = await getAccountVerifiedByDiscordId(discordid);
-        const result2: any = await modelCharacters.getCharactersByAccountId(result1[0].accountId);
+        const result2: any = await modelCharacters.getCharactersByAccountId(result1[0].accountid);
 
         if (result2.length > 0) {
             res.status(200).json(result2);

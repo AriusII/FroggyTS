@@ -11,8 +11,9 @@ import * as fxs from '../../others/utils/functions';
 })
 export class UserCommand extends Command {
     // constructor with preconditions
-    public constructor(context: Command.Context) {
+    public constructor(context: Command.Context, options: Command.Options) {
         super(context, {
+            ...options,
             preconditions: ['GameMasterOnly']
         });
     }

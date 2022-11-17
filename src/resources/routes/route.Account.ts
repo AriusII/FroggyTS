@@ -13,7 +13,7 @@ import { unknownRoutesHandler } from '../middlewares/unknownRoutes.hander';
 // We define the routes for the Account resources
 routeAccount.post('/add', accountController.accountAdd);
 routeAccount.post('/discord/login', accountController.accountLoginDiscord);
-routeAccount.get('/discord/:discordId', accountController.accountDiscord);
+routeAccount.get('/discord/:discordid', accountController.accountDiscord);
 routeAccount.get('/access/:id', accountController.accountAccess);
 routeAccount.get('/character/:guid', accountController.accountCharacter);
 

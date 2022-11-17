@@ -2,17 +2,18 @@ import { ApplyOptions } from '@sapphire/decorators';
 import { Command, RegisterBehavior } from '@sapphire/framework';
 import { ColorResolvable, MessageEmbed } from 'discord.js';
 
-import * as API_Account from '../../others/api/endpoints/account';
-import * as API_Character from '../../others/api/endpoints/characters';
-import { getRaceByGender, getClassByGender } from '../../others/utils/functions';
+//import * as API_Account from '../../others/api/endpoints/account';
+//import * as API_Character from '../../others/api/endpoints/characters';
+//import { getRaceByGender, getClassByGender } from '../../others/utils/functions';
 import { cmdIsActive, cmdGetName } from '../../others/utils/checks_functions';
 @ApplyOptions<Command.Options>({
 	description: `Ensemble de commandes pour les comptes ${process.env.SERVER_NAME} !`,
 })
 export class UserCommand extends Command {
     // constructor with preconditions
-    public constructor(context: Command.Context) {
+    public constructor(context: Command.Context, options: Command.Options) {
         super(context, {
+            ...options,
         });
     }
 	// Register slash and context menu command
