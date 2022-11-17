@@ -3,7 +3,7 @@ import { container } from "@sapphire/framework";
 
 export async function getCharactersByAccountId(id: number) {
     try {
-        const result: any = await container.prisma.$queryRawUnsafe(`SELECT guid, name, race, class, gender, online FROM ${process.env.CHARACTERS_DATABASE}.characters WHERE account = ?`, id);
+        const result: any = await container.prisma.$queryRawUnsafe(`SELECT guid, name, race, class, gender, online FROM ${process.env.CHAR_DATABASE}.characters WHERE account = ?`, id);
         return result;
     } catch (error) {
         return error;
