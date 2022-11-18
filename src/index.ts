@@ -4,7 +4,7 @@ import { LogLevel, SapphireClient, container } from '@sapphire/framework';
 import { Database } from './database/database';
 // Import expressServer as Express API Rest server
 import expressServer from './express/server';
-import { SOAPClient } from './others/soap/soapClient';
+import { SOAPClient } from './soap/soapClient';
 
 expressServer.listen(process.env.EXPRESS_PORT, () => {
     console.log(`Server is running on port ${process.env.EXPRESS_PORT}`);
@@ -36,7 +36,7 @@ const client = new SapphireClient({
 const main = async () => {
 	try {
 		client.logger.info('Logging in');
-        container.database = new Database();
+        container.database = Database.instance;
         container.soap = new SOAPClient();
 		await client.login();
 		client.logger.info('logged in');

@@ -57,7 +57,7 @@ export async function getAccountAccessById(id: number) {
 
 export async function getAccountIdByCharacterGuid(guid: number) {
     try {
-        const result: any = await container.database.query(`SELECT account.id FROM ${process.env.DB_AUTH}.account AS account INNER JOIN ${process.env.DB_CHAR}.characters as characters WHERE characters.account = account.id && characters.guid = ?`, guid);
+        const result: any = await container.database.query(`SELECT account.id FROM ${process.env.DB_AUTH}.account AS account INNER JOIN ${process.env.DB_CHAR}.characters as characters WHERE characters.account = account.id && characters.guid = ?`, [guid]);
         return result;
     } catch (error) {
         return error;

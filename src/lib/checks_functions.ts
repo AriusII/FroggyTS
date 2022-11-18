@@ -1,4 +1,4 @@
-import jsonCmds from '../soap/active.json';
+import jsonCmds from './active.json';
 
 export async function cmdIsActive(cmdId: number) {
     return jsonCmds.commands[cmdId].active;

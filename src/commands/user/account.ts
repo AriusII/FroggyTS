@@ -5,7 +5,7 @@ import { ColorResolvable, MessageEmbed } from 'discord.js';
 //import * as API_Account from '../../others/api/endpoints/account';
 //import * as API_Character from '../../others/api/endpoints/characters';
 //import { getRaceByGender, getClassByGender } from '../../others/utils/functions';
-import { cmdIsActive, cmdGetName } from '../../others/utils/checks_functions';
+import { cmdIsActive, cmdGetName } from '../../lib/checks_functions';
 @ApplyOptions<Command.Options>({
 	description: `Ensemble de commandes pour les comptes ${process.env.SERVER_NAME} !`,
 })

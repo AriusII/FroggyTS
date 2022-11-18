@@ -1,10 +1,13 @@
 import mysql from 'mysql2/promise';
 
+export declare type SQLParams = Array<string | number | boolean | Date> | undefined;
+export declare type SQLQuery = string;
+
 export class Database {
     private static _instance: Database;
     private pool: mysql.Pool;
     
-    public constructor() {
+    private constructor() {
         this.pool = mysql.createPool({
             host: process.env.DB_HOST,
             port: Number(process.env.DB_PORT),
@@ -19,7 +22,7 @@ export class Database {
     }
     
     // Query the database, we have two parameters, the query and the values, values are optional and are stored in an array
-    public async query(query: string, values?: any) {
+    public async query(query: SQLQuery, values?: SQLParams) {
         const connection = await this.pool.getConnection();
         try {
             const [result] = await connection.query(query, values);
