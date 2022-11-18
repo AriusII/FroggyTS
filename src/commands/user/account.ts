@@ -4,7 +4,7 @@ import { ColorResolvable, MessageEmbed } from 'discord.js';
 
 //import * as API_Account from '../../others/api/endpoints/account';
 //import * as API_Character from '../../others/api/endpoints/characters';
-//import { getRaceByGender, getClassByGender } from '../../others/utils/functions';
+//import { getRaceByGender, getClassByGender } from '../../lib/functions';
 import { cmdIsActive, cmdGetName } from '../../lib/checks_functions';
 @ApplyOptions<Command.Options>({
 	description: `Ensemble de commandes pour les comptes ${process.env.SERVER_NAME} !`,
@@ -95,7 +95,7 @@ export class UserCommand extends Command {
             .setColor(embed_color)
             .setTimestamp()
 
-        if (!await cmdIsActive(6)) {
+        if (!await cmdIsActive(5)) {
             embed.setTitle(`Commande désactivée`)
                 .setDescription(`❌ La commande "${cmdGetName(6)}" est désactivée pour le moment.`)
             return await interaction.reply({ embeds: [embed], ephemeral: true });
@@ -115,7 +115,7 @@ export class UserCommand extends Command {
             .setColor(embed_color)
             .setTimestamp()
 
-        if (!await cmdIsActive(9)) {
+        if (!await cmdIsActive(8)) {
             embed.setTitle(`Commande désactivée`)
                 .setDescription(`❌ La commande "${cmdGetName(9)}" est désactivée pour le moment.`)
             return await interaction.reply({ embeds: [embed], ephemeral: true });
@@ -128,17 +128,17 @@ export class UserCommand extends Command {
 
     // subcommand characters
     public async characters(interaction: Command.ChatInputInteraction) {
-        const embed_color: ColorResolvable = process.env.EMBED_COLOR?.toString() as ColorResolvable;
+        //const embed_color: ColorResolvable = process.env.EMBED_COLOR?.toString() as ColorResolvable;
         const embed = new MessageEmbed()
-            .setColor(embed_color)
+            .setColor('RANDOM')
             .setTimestamp()
-
-        if (!await cmdIsActive(9)) {
+        console.log("1")
+         if (!await cmdIsActive(8)) {
             embed.setTitle(`Commande désactivée`)
                 .setDescription(`❌ La commande "${cmdGetName(9)}" est désactivée pour le moment.`)
             return await interaction.reply({ embeds: [embed], ephemeral: true });
         }
-
+        console.log("2")
         embed.setTitle(`Test`)
             .setDescription(`Test`)
         return await interaction.reply({ embeds: [embed] });

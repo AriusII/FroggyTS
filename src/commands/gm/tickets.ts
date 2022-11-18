@@ -1,9 +1,9 @@
 import { ApplyOptions } from '@sapphire/decorators';
 import { Command, RegisterBehavior } from '@sapphire/framework';
 import { ColorResolvable, MessageEmbed, MessageActionRow, MessageButton, MessageSelectMenu } from 'discord.js';
-import * as API_Ticket from '../../others/api/endpoints/tickets';
-import { cmdIsActive, cmdGetName } from '../../lib/checks_functions';
-import * as fxs from '../../others/utils/functions';
+import * as API_Ticket from '../../api/endpoints/tickets';
+/* import { cmdIsActive, cmdGetName } from '../../lib/checks_functions'; */
+import * as fxs from '../../lib/functions';
 @ApplyOptions<Command.Options>({
 	description: `[GM] Ensemble de commandes pour les tickets ${process.env.SERVER_NAME}`,
 })
@@ -33,11 +33,11 @@ export class UserCommand extends Command {
             .setColor(embed_color)
             .setTimestamp()
 
-        if (!await cmdIsActive(7)) {
+/*         if (!await cmdIsActive(7)) {
             embed.setTitle(`Commande désactivée`)
                 .setDescription(`❌ La commande "${cmdGetName(7)}" est désactivée pour le moment.`)
             return await interaction.reply({ embeds: [embed], ephemeral: true });
-        }
+        } */
 
         if (!await fxs.isLogin(discord_id)) {
             embed.setTitle(`Erreur`)

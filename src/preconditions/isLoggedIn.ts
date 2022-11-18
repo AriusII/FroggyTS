@@ -1,6 +1,6 @@
 import { AllFlowsPrecondition } from '@sapphire/framework';
 import type { CommandInteraction, ContextMenuInteraction, Message } from 'discord.js';
-import { isLogin } from '../others/utils/functions';
+import { isLogin } from '../lib/functions';
 
 export class UserPrecondition extends AllFlowsPrecondition {
 	public override chatInputRun(interaction: CommandInteraction) {
