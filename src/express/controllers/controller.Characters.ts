@@ -6,22 +6,15 @@ import { getAccountVerifiedByDiscordId } from '../models/model.Account';
 export async function getCharactersByAccountId(req: Request, res: Response, _next: NextFunction) {
     try {
         const accountid: number = parseInt(req.params.accountid);
-        console.log(`[Characters] Requested characters by account id: ${accountid}`);
         const result: any = await modelCharacters.getCharactersByAccountId(accountid);
-        console.log(result);
-
-        result.forEach((element: any) => {
-            element.guid = element.guid.toString();
-        });
-
+        
         if (result.length > 0) {
             res.status(200).json(result);
         } else {
-            res.status(404).json({ message: 'No characters found.' });
+            res.status(404).json({ message: 'No characters found' });
         }
     } catch (error) {
-        console.log(error);
-        res.status(500).json({ message: 'An error occured.' });
+        res.status(500).json({ message: error });
     }
 }
 
