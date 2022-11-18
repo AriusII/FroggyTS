@@ -1,9 +1,9 @@
 import './lib/setup';
 import { LogLevel, SapphireClient, container } from '@sapphire/framework';
-// Import Prisma as Database ORM
-import { PrismaClient } from '@prisma/client';
+// Import Database
+import { Database } from './database/database';
 // Import expressServer as Express API Rest server
-import expressServer from './resources/server';
+import expressServer from './express/server';
 import { SOAPClient } from './others/soap/soapClient';
 
 expressServer.listen(process.env.EXPRESS_PORT, () => {
@@ -36,7 +36,7 @@ const client = new SapphireClient({
 const main = async () => {
 	try {
 		client.logger.info('Logging in');
-        container.prisma = new PrismaClient();
+        container.database = new Database();
         container.soap = new SOAPClient();
 		await client.login();
 		client.logger.info('logged in');
@@ -51,7 +51,7 @@ main();
 
 declare module '@sapphire/pieces' {
 	interface Container {
-		prisma: PrismaClient;
+        database: Database;
         soap: SOAPClient;
 	}
 }
